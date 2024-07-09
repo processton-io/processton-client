@@ -1,12 +1,12 @@
 {
-    "name": "processton/processton-client",
+    "name": "processton-io/processton-client",
     "description": "Provide publications and structure for processton client",
     "version": "1.0.0",
     "keywords": [
         "processton",
         "processton-client"
     ],
-    "homepage": "https://github.com/processton/processton-client",
+    "homepage": "https://github.com/processton-io/processton-client",
     "license": "GPL-2.0-or-later",
     "type": "library",
     "authors": [

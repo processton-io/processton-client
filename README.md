@@ -1,8 +1,8 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/processton/processton-client.svg?style=flat-square)](https://packagist.org/packages/processton/processton-client)
-[![Total Downloads](https://img.shields.io/packagist/dt/processton/processton-client.svg?style=flat-square)](https://packagist.org/packages/processton/processton-client)
-![GitHub Actions](https://github.com/processton/processton-client/actions/workflows/main.yml/badge.svg)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/processton-io/processton-client.svg?style=flat-square)](https://packagist.org/packages-io/processton/processton-client)
+[![Total Downloads](https://img.shields.io/packagist/dt/processton-io/processton-client.svg?style=flat-square)](https://packagist.org/packages/processton-io/processton-client)
+![GitHub Actions](https://github.com/processton-io/processton-client/actions/workflows/main.yml/badge.svg)
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
@@ -11,7 +11,7 @@ This is where your description should go. Try and limit it to a paragraph or two
 You can install the package via composer:
 
 ```bash
-composer require processton/processton-client
+composer require processton-io/processton-client
 ```
 
 ## Usage
@@ -40,7 +40,7 @@ If you discover any security related issues, please email ahmadkokab@gmail.com i
 
 ## Credits
 
--   [Ahmad Faryab Kokab](https://github.com/processton)
+-   [Ahmad Faryab Kokab](https://github.com/afaryab)
 -   [All Contributors](../../contributors)
 
 ## License
