@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.not-form > input[type=text] {
+    ring:0;
+}
+.not-form > input[type=text]:focus {
+    ring:0;
+    --tw-ring-color: transparent;
+}
+.ce-block__content,
+.ce-toolbar__content{
+    max-width: calc(100% - 16px) !important;
+}
+.ce-block__content{
+    margin-left: 20px;
+}
+.ce-toolbar__actions{
+    right: calc(100% - 20px) ;
+}

@@ -1,0 +1,38 @@
+{
+    "auth": {
+        "user": {
+            "name": "Name",
+            "email": "email@example.com",
+            "is_admin": false
+        }
+    },
+    "org": {
+        "name": "Organization",
+        "id": "org_id",
+        "logo": "/resources/assets/js/stories/static/logo.png",
+        "full_logo_path": "/resources/assets/js/stories/static/logo.png"
+    },
+    "interaction": {
+        "name": "Interaction",
+        "schema": {
+            "elements": [
+                {
+                    "type": "rows",
+                    "childrens": [
+                        {
+                            "type": "stats_card",
+                            "title": "Stats Card",
+                            "icon": "icon",
+                            "data": {
+                                "value": 100,
+                                "percentage": 10,
+                                "label": "Label",
+                                "color": "green"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
