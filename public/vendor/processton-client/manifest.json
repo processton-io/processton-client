@@ -1,0 +1,164 @@
+{
+  "_ActionItem-779c2d4f.js": {
+    "file": "assets/ActionItem-779c2d4f.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js"
+    ]
+  },
+  "_AppLayout-d617927c.js": {
+    "dynamicImports": [
+      "resources/assets/js/Components/StatsCard.tsx",
+      "resources/assets/js/Components/Card/Card.tsx",
+      "resources/assets/js/Components/Form/FormBuilder.tsx",
+      "resources/assets/js/Components/Grid/GridBuilder.tsx",
+      "resources/assets/js/Components/DataTable.tsx"
+    ],
+    "file": "assets/AppLayout-d617927c.js",
+    "imports": [
+      "resources/assets/js/app.tsx"
+    ]
+  },
+  "_SimpleSelectInput-8e6a6914.js": {
+    "file": "assets/SimpleSelectInput-8e6a6914.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js"
+    ]
+  },
+  "_iframewapper_helper-4a327444.js": {
+    "file": "assets/iframewapper_helper-4a327444.js"
+  },
+  "resources/assets/css/app.css": {
+    "file": "assets/app-e3637238.css",
+    "isEntry": true,
+    "src": "resources/assets/css/app.css"
+  },
+  "resources/assets/js/Components/Card/Card.tsx": {
+    "css": [
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/Card-20a74d4f.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js",
+      "_ActionItem-779c2d4f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Components/Card/Card.tsx"
+  },
+  "resources/assets/js/Components/DataTable.tsx": {
+    "css": [
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/DataTable-c6e104e1.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_SimpleSelectInput-8e6a6914.js",
+      "_ActionItem-779c2d4f.js",
+      "_AppLayout-d617927c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Components/DataTable.tsx"
+  },
+  "resources/assets/js/Components/Form/FormBuilder.css": {
+    "file": "assets/FormBuilder-a0316ddc.css",
+    "src": "resources/assets/js/Components/Form/FormBuilder.css"
+  },
+  "resources/assets/js/Components/Form/FormBuilder.tsx": {
+    "css": [
+      "assets/FormBuilder-a0316ddc.css",
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/FormBuilder-a5423eb1.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_iframewapper_helper-4a327444.js",
+      "_AppLayout-d617927c.js",
+      "_SimpleSelectInput-8e6a6914.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Components/Form/FormBuilder.tsx"
+  },
+  "resources/assets/js/Components/Grid/GridBuilder.tsx": {
+    "css": [
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/GridBuilder-54138069.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Components/Grid/GridBuilder.tsx"
+  },
+  "resources/assets/js/Components/StatsCard.tsx": {
+    "css": [
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/StatsCard-0684f43c.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Components/StatsCard.tsx"
+  },
+  "resources/assets/js/Pages/Builder.tsx": {
+    "css": [
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/Builder-034fcba3.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js",
+      "_ActionItem-779c2d4f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Pages/Builder.tsx"
+  },
+  "resources/assets/js/Pages/Error.tsx": {
+    "css": [
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/Error-dc27b73b.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Pages/Error.tsx"
+  },
+  "resources/assets/js/Pages/Interaction.tsx": {
+    "css": [
+      "assets/app-e3637238.css"
+    ],
+    "file": "assets/Interaction-0ed063b6.js",
+    "imports": [
+      "resources/assets/js/app.tsx",
+      "_AppLayout-d617927c.js",
+      "_iframewapper_helper-4a327444.js",
+      "_ActionItem-779c2d4f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/assets/js/Pages/Interaction.tsx"
+  },
+  "resources/assets/js/app.css": {
+    "file": "assets/app-2fdbe919.css",
+    "src": "resources/assets/js/app.css"
+  },
+  "resources/assets/js/app.tsx": {
+    "css": [
+      "assets/app-2fdbe919.css",
+      "assets/app-e3637238.css"
+    ],
+    "dynamicImports": [
+      "resources/assets/js/Pages/Builder.tsx",
+      "resources/assets/js/Pages/Error.tsx",
+      "resources/assets/js/Pages/Interaction.tsx"
+    ],
+    "file": "assets/app-7ef8dedc.js",
+    "isEntry": true,
+    "src": "resources/assets/js/app.tsx"
+  }
+}

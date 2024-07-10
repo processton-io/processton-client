@@ -14,4 +14,4 @@
 node_modules
 node_modules/*
 *storybook.log
-vendor
+vendor/*

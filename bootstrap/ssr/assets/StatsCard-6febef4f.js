@@ -1,5 +1,5 @@
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
-import { A as AppIcon } from "./AppLayout-d9bad2db.js";
+import { A as AppIcon } from "./AppLayout-a9a67eb4.js";
 import classNames from "classnames";
 import CountUp from "react-countup";
 import "react";
@@ -31,6 +31,7 @@ function StatsCard(props) {
   };
   switch (type) {
     case "simple_dual":
+      console.log(title, value, icon, unit, unit_2, value_2, seperator);
       return /* @__PURE__ */ jsx(SimpleDualStatsCard, { title, value: formatNumber(value), icon, unit, unit_2, value_2: formatNumber(value_2), seperator });
     default:
       return /* @__PURE__ */ jsx(SimpleStatsCard, { title, value: formatNumber(value), icon, unit });
@@ -78,13 +79,17 @@ function SimpleDualStatsCard({ title, value, value_2, seperator, icon, unit, uni
       }), children: title }),
       icon && /* @__PURE__ */ jsxs("div", { className: "py-2 pt-5", children: [
         /* @__PURE__ */ jsxs("sup", { className: "font-semibold text-4xl text-blueGray-700 text-right", children: [
-          value,
+          value.value,
+          " ",
+          value.suffix,
           " ",
           unit && /* @__PURE__ */ jsx("span", { className: "text-2xl", children: unit })
         ] }),
         seperator && /* @__PURE__ */ jsx("span", { className: "text-4xl font-light text-blueGray-400 px-1", children: seperator }),
         value_2 && /* @__PURE__ */ jsxs("sub", { className: "font-semibold text-4xl text-blueGray-700 text-right", children: [
-          value_2,
+          value_2.value,
+          " ",
+          value_2.suffix,
           " ",
           unit_2 && /* @__PURE__ */ jsx("span", { className: "text-2xl", children: unit_2 })
         ] })
@@ -93,13 +98,17 @@ function SimpleDualStatsCard({ title, value, value_2, seperator, icon, unit, uni
     /* @__PURE__ */ jsx(Fragment, { children: icon && /* @__PURE__ */ jsx("div", { className: "relative w-auto pl-4 flex-shrink", children: /* @__PURE__ */ jsx("div", { className: "text-white p-3 text-center inline-flex items-center justify-center w-12 h-12  rounded-full bg-gray-700", children: /* @__PURE__ */ jsx(AppIcon, { icon }) }) }) }),
     /* @__PURE__ */ jsx(Fragment, { children: !icon && /* @__PURE__ */ jsx("div", { className: "w-auto pl-4 flex-initial", children: /* @__PURE__ */ jsxs("div", { className: "px-0 py-3 pb-2 text-center inline-flex items-right justify-end", children: [
       /* @__PURE__ */ jsxs("sup", { className: "font-semibold text-4xl text-blueGray-700", children: [
-        value,
+        value.value,
+        " ",
+        value.suffix,
         " ",
         unit && /* @__PURE__ */ jsx("span", { className: "text-2xl", children: unit })
       ] }),
       seperator && /* @__PURE__ */ jsx("span", { className: "text-4xl font-light text-blueGray-400", children: seperator }),
       value_2 && /* @__PURE__ */ jsxs("sub", { className: "font-semibold text-4xl text-blueGray-700", children: [
-        value_2,
+        value_2.value,
+        " ",
+        value_2.suffix,
         " ",
         unit_2 && /* @__PURE__ */ jsx("span", { className: "text-2xl", children: unit_2 })
       ] })

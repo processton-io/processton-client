@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "NODE_ENV=development tsc && vite build --watch --mode development",
     "build-dev": "NODE_ENV=development tsc && vite build --mode development",
-    "build": "tsc && vite build --mode development && vite build --ssr",
+    "build": "tsc && vite build && vite build --ssr",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook --coverage",

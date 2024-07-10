@@ -1,7 +1,7 @@
-import { jsxs, jsx } from "react/jsx-runtime";
-import { A as AppIcon, a as AppLayout, I as InteractionBuilder } from "./AppLayout-d9bad2db.js";
+import { jsxs, jsx, Fragment } from "react/jsx-runtime";
+import { A as AppIcon, a as AppLayout, I as InteractionBuilder } from "./AppLayout-a9a67eb4.js";
 import { Link } from "@inertiajs/react";
-import { A as ActionItem } from "./ActionItem-525e3803.js";
+import { A as ActionItem } from "./ActionItem-2d7d02ac.js";
 import "react";
 import "classnames";
 import "ziggy-js";
@@ -37,8 +37,7 @@ function Builder({
   navbarStyle = "default"
 }) {
   var _a, _b;
-  console.log(interaction);
-  return /* @__PURE__ */ jsxs(
+  return /* @__PURE__ */ jsx(
     AppLayout,
     {
       user: auth.user,
@@ -47,10 +46,8 @@ function Builder({
       applications,
       title: interaction.name,
       navbarStyle,
-      children: [
-        application.theme.breadcrumb && /* @__PURE__ */ jsx(BreadCrumb, { items: ((_a = interaction == null ? void 0 : interaction.schema) == null ? void 0 : _a.breadcrumbs) ? (_b = interaction == null ? void 0 : interaction.schema) == null ? void 0 : _b.breadcrumbs : [], actions: (interaction == null ? void 0 : interaction.schema.header_actions) ? interaction == null ? void 0 : interaction.schema.header_actions : [] }),
-        /* @__PURE__ */ jsx("div", { className: "px-4 sm:px-6 lg:px-8 py-6 lg:py-8", children: /* @__PURE__ */ jsx(InteractionBuilder, { ...interaction, attachment_values }) })
-      ]
+      header: /* @__PURE__ */ jsx(Fragment, { children: application.theme.breadcrumb && /* @__PURE__ */ jsx(BreadCrumb, { items: ((_a = interaction == null ? void 0 : interaction.schema) == null ? void 0 : _a.breadcrumbs) ? (_b = interaction == null ? void 0 : interaction.schema) == null ? void 0 : _b.breadcrumbs : [], actions: (interaction == null ? void 0 : interaction.schema.header_actions) ? interaction == null ? void 0 : interaction.schema.header_actions : [] }) }),
+      children: /* @__PURE__ */ jsx("div", { className: "px-4 sm:px-6 lg:px-8 py-6 lg:py-8", children: /* @__PURE__ */ jsx(InteractionBuilder, { ...interaction, attachment_values }) })
     }
   );
 }

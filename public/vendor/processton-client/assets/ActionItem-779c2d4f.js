@@ -1,10 +1,7 @@
-import { jsx, Fragment } from "react/jsx-runtime";
-import { Link } from "@inertiajs/react";
-import { M as ModalContext, d as ActionButton } from "./AppLayout-d9bad2db.js";
-import classNames from "classnames";
-import { useContext } from "react";
+import { r as reactExports, j as jsxRuntimeExports, a as ae } from "./app-7ef8dedc.js";
+import { X as ModalContext, S as ActionButton, c as classNames } from "./AppLayout-d617927c.js";
 function ActionItem({ data = [], action, icon }) {
-  const { newModel } = useContext(ModalContext);
+  const { newModel } = reactExports.useContext(ModalContext);
   if (action.type === "link") {
     let linkparams = {};
     if (action.attachments) {
@@ -13,7 +10,7 @@ function ActionItem({ data = [], action, icon }) {
       });
     }
     let linkToProceed = Object.keys(linkparams).length > 0 ? action.action + "?" + new URLSearchParams(linkparams).toString() : action.action;
-    return /* @__PURE__ */ jsx(Link, { href: linkToProceed, children: /* @__PURE__ */ jsx(
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(ae, { href: linkToProceed, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       ActionButton,
       {
         type: action.button,
@@ -31,7 +28,7 @@ function ActionItem({ data = [], action, icon }) {
       });
     }
     let linkToProceed = Object.keys(linkparams).length > 0 ? action.action + "?" + new URLSearchParams(linkparams).toString() : action.action;
-    return /* @__PURE__ */ jsx(
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
       ActionButton,
       {
         type: action.button,
@@ -43,7 +40,7 @@ function ActionItem({ data = [], action, icon }) {
       }
     );
   } else {
-    return /* @__PURE__ */ jsx(Fragment, {});
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
   }
 }
 export {

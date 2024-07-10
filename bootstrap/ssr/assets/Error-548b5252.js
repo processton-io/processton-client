@@ -1,6 +1,6 @@
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 import { Head } from "@inertiajs/react";
-import { a as AppLayout } from "./AppLayout-d9bad2db.js";
+import { a as AppLayout } from "./AppLayout-a9a67eb4.js";
 import "react";
 import "classnames";
 import "ziggy-js";

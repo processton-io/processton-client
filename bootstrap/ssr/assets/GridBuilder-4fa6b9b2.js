@@ -1,5 +1,5 @@
 import { jsxs, jsx, Fragment } from "react/jsx-runtime";
-import { R as RowElement, A as AppIcon } from "./AppLayout-d9bad2db.js";
+import { R as RowElement, A as AppIcon } from "./AppLayout-a9a67eb4.js";
 import { Link } from "@inertiajs/react";
 import "react";
 import "classnames";

@@ -43,10 +43,13 @@ function parseMenu(application) {
     };
   }) : [];
 }
-function OrgLogo({ org }) {
-  return /* @__PURE__ */ jsx(Fragment, { children: org && /* @__PURE__ */ jsx("div", { className: "flex", children: /* @__PURE__ */ jsx("div", { className: "shrink-0 flex items-center", children: (org == null ? void 0 : org.name) && /* @__PURE__ */ jsxs(Link, { href: "/", className: "cursor-pointer shrink-0 flex items-center", children: [
-    org.full_logo_path && /* @__PURE__ */ jsx("img", { className: "block h-6 my-1 w-auto fill-current", src: org.full_logo_path }),
-    /* @__PURE__ */ jsx("h3", { className: "ml-3 text-xl", children: org.name })
+function OrgLogo({ org, theme }) {
+  return /* @__PURE__ */ jsx(Fragment, { children: org && /* @__PURE__ */ jsx("div", { className: "flex items-center", children: /* @__PURE__ */ jsx("div", { className: "w-full", children: (org == null ? void 0 : org.name) && /* @__PURE__ */ jsxs(Link, { href: "/", className: "cursor-pointer shrink-0 flex items-center", children: [
+    org.full_logo_path && /* @__PURE__ */ jsx("img", { className: classNames("h-6 my-1 w-auto fill-current", {
+      "flex-1": theme.nav_bar == "minified_side",
+      "flex-0": theme.nav_bar != "minified_side"
+    }), src: org.full_logo_path }),
+    theme.nav_bar != "minified_side" && /* @__PURE__ */ jsx("h3", { className: "ml-3 text-xl flex-1", children: org.name })
   ] }) }) }) });
 }
 const DropDownContext = createContext();
@@ -186,7 +189,7 @@ function NavLinkSide({ active = false, className = "", children, href = "#", ...
     {
       href,
       ...props,
-      className: active + " inline-flex items-center px-4 py-2 text-sm font-medium leading-5 transition duration-150 ease-in-out min-w-xxxs max-w-xxs text-center w-full " + (active ? "text-gray-900 " : "text-gray-500 hover:text-gray-700 ") + className,
+      className: active + " flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group " + (active ? "text-gray-900 " : "text-gray-500 hover:text-gray-700 ") + className,
       children: [
         children,
         " ",
@@ -555,7 +558,7 @@ function Modal({ children, show = false, maxWidth = "2xl", closeable = true, onC
             children: /* @__PURE__ */ jsx(
               Dialog.Panel,
               {
-                className: `mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto ${maxWidthClass}`,
+                className: `mb-6 overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto ${maxWidthClass}`,
                 children
               }
             )
@@ -673,7 +676,7 @@ function BaseLayout({
   return /* @__PURE__ */ jsxs("div", { className: classNames("min-h-screen bg-gradient-to-b from-gray-200 from-10% via-gray-100 via-30% to-gray-50 to-90%"), children: [
     /* @__PURE__ */ jsx(Head, { title }),
     (theme.nav_bar == "minified_top" || theme.nav_bar == "top" || theme.nav_bar == "admin_top") && /* @__PURE__ */ jsx("nav", { className: classNames("border-b-2 border-gray-100 shadow shadow-inner bg-white text-gray-800"), children: /* @__PURE__ */ jsx("div", { className: "mx-auto px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ jsxs("div", { className: "flex justify-between h-12", children: [
-      /* @__PURE__ */ jsx(OrgLogo, { org }),
+      /* @__PURE__ */ jsx(OrgLogo, { org, theme }),
       /* @__PURE__ */ jsx("div", { className: "flex-1 flex md:flex", children: theme.nav_bar == "minified_top" && /* @__PURE__ */ jsx("div", { className: classNames("w-full md:flex h-12"), children: /* @__PURE__ */ jsx("div", { className: "sm:-my-px w-full flex flex-row md:ml-0 px-4 sm:px-6 lg:px-8 ", children: /* @__PURE__ */ jsx("div", { className: "flex-1 w-full flex", children: /* @__PURE__ */ jsx("div", { className: "hidden md:flex items-center border-t h-12", children: menueItems && (menueItems == null ? void 0 : menueItems.map((link) => {
         if (link.is_hidden) {
           return /* @__PURE__ */ jsx(Fragment, {});
@@ -820,29 +823,47 @@ function BaseLayout({
         ] });
       }) })
     ] }),
-    /* @__PURE__ */ jsx("main", { children: /* @__PURE__ */ jsxs("div", { className: "flex w-full", children: [
-      (theme.nav_bar == "minified_side" || theme.nav_bar == "side" || theme.nav_bar == "admin_side") && /* @__PURE__ */ jsx("aside", { id: "default-sidebar", className: "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0", "aria-label": "Sidebar", children: /* @__PURE__ */ jsxs("div", { className: "h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800", children: [
-        /* @__PURE__ */ jsx(OrgLogo, { org }),
-        /* @__PURE__ */ jsxs("ul", { className: "space-y-2 font-medium", children: [
-          menueItems && (menueItems == null ? void 0 : menueItems.map((link) => {
-            if (link.is_hidden) {
-              return /* @__PURE__ */ jsx(Fragment, {});
-            }
-            let urllink = link == null ? void 0 : link.slug;
-            return /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(NavLinkSide, { href: link == null ? void 0 : link.href, active: (activeMenuGroup == null ? void 0 : activeMenuGroup.slug) && activeMenuGroup.slug === urllink, className: "shadow-inner shadow-inner-xl h-12", children: [
-              link.icon && /* @__PURE__ */ jsx(AppIcon, { icon: link.icon, className: "mr-2 h-4" }),
-              link.label
-            ] }) });
-          })),
-          /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs("a", { href: "#", className: "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group", children: [
-            /* @__PURE__ */ jsxs("svg", { className: "flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white", "aria-hidden": "true", xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 20 20", children: [
-              /* @__PURE__ */ jsx("path", { d: "M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" }),
-              /* @__PURE__ */ jsx("path", { d: "M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" }),
-              /* @__PURE__ */ jsx("path", { d: "M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" })
-            ] }),
-            /* @__PURE__ */ jsx("span", { className: "flex-1 ms-3 whitespace-nowrap", children: "Sign Up" })
-          ] }) })
-        ] })
+    /* @__PURE__ */ jsx("main", { children: /* @__PURE__ */ jsxs("div", { className: classNames("flex w-full", {
+      "flex-row": theme.nav_bar == "minified_side" || theme.nav_bar == "side" || theme.nav_bar == "admin_side",
+      "flex-col": theme.nav_bar == "minified_top" || theme.nav_bar == "top" || theme.nav_bar == "admin_top"
+    }), children: [
+      (theme.nav_bar == "minified_side" || theme.nav_bar == "side" || theme.nav_bar == "admin_side") && /* @__PURE__ */ jsx("aside", { className: classNames("h-screen transition-transform -translate-x-full sm:translate-x-0", {
+        "w-14": theme.nav_bar == "minified_side",
+        "w-64": theme.nav_bar == "side" || theme.nav_bar == "admin_side"
+      }), "aria-label": "Sidebar", children: /* @__PURE__ */ jsxs("div", { className: classNames("h-full overflow-y-auto bg-gray-50 dark:bg-gray-800 space-y-2 divide-y", {
+        "px-1 py-2 pt-1": theme.nav_bar == "minified_side",
+        "px-3 py-3 pt-1": theme.nav_bar == "side" || theme.nav_bar == "admin_side"
+      }), children: [
+        /* @__PURE__ */ jsx(OrgLogo, { org, theme }),
+        /* @__PURE__ */ jsx("div", { className: classNames("flex-1 border-b border-gray-100 mt-2"), children: /* @__PURE__ */ jsx("div", { className: classNames("cursor-pointer font-medium", {
+          "w-full flex-1": theme.nav_bar == "minified_side",
+          "inline-flex w-full": theme.nav_bar == "side" || theme.nav_bar == "admin_side"
+        }), children: /* @__PURE__ */ jsxs("span", { className: classNames("flex w-full text-gray-900 dark:text-white bg-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 group", {
+          "p-2 items-start": theme.nav_bar == "side" || theme.nav_bar == "admin_side",
+          "p-1 items-center": theme.nav_bar == "minified_side"
+        }), onClick: () => setShowingAppsDropdown(!showingAppsDropdown), children: [
+          /* @__PURE__ */ jsx(ApplicationLogo, { className: classNames("text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white", {
+            "w-5 h-5 flex-shrink-0": theme.nav_bar == "side" || theme.nav_bar == "admin_side",
+            "w-8 h-8 flex-1": theme.nav_bar == "minified_side"
+          }) }),
+          (theme.nav_bar == "side" || theme.nav_bar == "admin_side") && /* @__PURE__ */ jsx("span", { className: "flex-1 text-left text-md ms-3 whitespace-nowrap", children: application == null ? void 0 : application.name })
+        ] }) }) }),
+        /* @__PURE__ */ jsx("div", { className: "flex flex-col items-center", children: /* @__PURE__ */ jsx("ul", { className: "flex-1 space-y-2 divide-y w-full", children: menueItems && (menueItems == null ? void 0 : menueItems.map((link) => {
+          if (link.is_hidden) {
+            return /* @__PURE__ */ jsx(Fragment, {});
+          }
+          let urllink = link == null ? void 0 : link.slug;
+          return /* @__PURE__ */ jsx("li", { className: "pt-2", children: /* @__PURE__ */ jsxs(NavLinkSide, { href: link == null ? void 0 : link.href, active: (activeMenuGroup == null ? void 0 : activeMenuGroup.slug) && activeMenuGroup.slug === urllink, className: classNames({
+            "px-1": theme.nav_bar == "side" || theme.nav_bar == "admin_side",
+            "p-1 flex w-full items-center": theme.nav_bar == "minified_side"
+          }), children: [
+            link.icon && /* @__PURE__ */ jsx(AppIcon, { icon: link.icon, className: classNames("flex-shrink-0 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white", {
+              "w-5 h-5 inline-flex": theme.nav_bar == "side" || theme.nav_bar == "admin_side",
+              "w-6 h-6 flex-1": theme.nav_bar == "minified_side"
+            }) }),
+            (theme.nav_bar == "side" || theme.nav_bar == "admin_side") && /* @__PURE__ */ jsx("span", { className: "flex-1 ms-3 whitespace-nowrap text-sm", children: link.label })
+          ] }) });
+        })) }) })
       ] }) }),
       activeMenuGroup && activeMenuGroup.children && activeMenuGroup.children.length > 0 && /* @__PURE__ */ jsx("div", { className: "hidden md:block sm:pl-6 lg:pl-8 bg-white shadow-2xl bg-clip-border", children: /* @__PURE__ */ jsx("div", { className: "w-48", children: /* @__PURE__ */ jsx("div", { className: "py-0", children: /* @__PURE__ */ jsx("div", { className: "", children: /* @__PURE__ */ jsx("div", { className: "overflow-hidden overflow-y-auto break-words border-l border-gray-200 h-side-bar ", children: activeMenuGroup.children.map((link) => {
         if (link.is_hidden) {
@@ -853,10 +874,16 @@ function BaseLayout({
           link.label
         ] });
       }) }) }) }) }) }),
-      /* @__PURE__ */ jsxs("div", { className: classNames("flex-1", { "hidden md:block": showingNavigationDropdown, "block": !showingNavigationDropdown }), children: [
-        /* @__PURE__ */ jsx("div", { children: header }),
-        /* @__PURE__ */ jsx("div", { children })
-      ] })
+      /* @__PURE__ */ jsx("div", { children: header }),
+      /* @__PURE__ */ jsx("div", { className: classNames({
+        "hidden md:flex": showingNavigationDropdown,
+        "flex": !showingNavigationDropdown,
+        "h-screen w-screen": theme.centered_layout,
+        "w-full": !theme.centered_layout
+      }), children: /* @__PURE__ */ jsx("div", { className: classNames({
+        "mx-auto my-auto": theme.centered_layout,
+        "flex-1": !theme.centered_layout
+      }), children }) })
     ] }) }),
     /* @__PURE__ */ jsx(Modal, { show: showingAppsDropdown, onClose: setShowingAppsDropdown, children: /* @__PURE__ */ jsxs("div", { className: "p-6", children: [
       /* @__PURE__ */ jsx("div", { children: applications && Object.keys(applications).map((group) => {
@@ -1085,11 +1112,11 @@ function Tabs(element, attachments) {
     })) })
   ] }) });
 }
-const StatsCard = lazy(() => import("./StatsCard-64009b8a.js"));
-const Card = lazy(() => import("./Card-e8bdff37.js"));
-const FormBuilder = lazy(() => import("./FormBuilder-610bc570.js"));
-const GridBuilder = lazy(() => import("./GridBuilder-5f520bb2.js"));
-const DataTable = lazy(() => import("./DataTable-d40c58f3.js"));
+const StatsCard = lazy(() => import("./StatsCard-6febef4f.js"));
+const Card = lazy(() => import("./Card-162a3ccf.js"));
+const FormBuilder = lazy(() => import("./FormBuilder-5e22dbc9.js"));
+const GridBuilder = lazy(() => import("./GridBuilder-4fa6b9b2.js"));
+const DataTable = lazy(() => import("./DataTable-354d1082.js"));
 function InteractionBuilder(interaction) {
   return /* @__PURE__ */ jsx("div", { className: "mx-auto ", children: /* @__PURE__ */ jsx(RenderRow, { row: interaction.schema.elements, attachment_values: interaction.attachment_values }) });
 }
@@ -1154,13 +1181,13 @@ function Loading({ className = "" }) {
   return /* @__PURE__ */ jsx("div", { className: classNames("w-full text-center", className), children: /* @__PURE__ */ jsx(AppIcon, { icon: "loading", className: "animate-spin h-12 w-12 text-red" }) });
 }
 function LoadingStatsCard({}) {
-  return /* @__PURE__ */ jsx("div", { className: "w-full p-0 m-0 bg-white border h-full flex flex-col", children: /* @__PURE__ */ jsx("div", { className: "min-w-0 break-words my-auto", children: /* @__PURE__ */ jsx("div", { className: "flex-auto p-4", children: /* @__PURE__ */ jsx("div", { className: "flex flex-wrap", children: /* @__PURE__ */ jsxs("div", { className: "pr-4 flex-1 flex-grow flex flex-row space-x-2", children: [
+  return /* @__PURE__ */ jsx("div", { className: "w-full p-0 m-0 bg-white border h-full flex flex-col", children: /* @__PURE__ */ jsx("div", { className: "min-w-0 break-words my-auto", children: /* @__PURE__ */ jsx("div", { className: "flex-auto", children: /* @__PURE__ */ jsx("div", { className: "flex flex-wrap", children: /* @__PURE__ */ jsxs("div", { className: "pr-4 flex-1 flex-grow flex flex-row space-x-2", children: [
     /* @__PURE__ */ jsx("div", { className: "h-14 bg-gray-200 animate-pulse w-1/2" }),
     /* @__PURE__ */ jsx("div", { className: "h-14 bg-gray-200 animate-pulse w-1/2" })
   ] }) }) }) }) });
 }
 function LoadingDataTable({}) {
-  return /* @__PURE__ */ jsx("div", { className: "w-full p-0 m-0 bg-white border h-full flex flex-col", children: /* @__PURE__ */ jsx("div", { className: "min-w-0 break-words my-auto", children: /* @__PURE__ */ jsx("div", { className: "flex-auto p-4", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col", children: [
+  return /* @__PURE__ */ jsx("div", { className: "w-full p-0 m-0 bg-white border h-full flex flex-col", children: /* @__PURE__ */ jsx("div", { className: "min-w-0 break-words my-auto", children: /* @__PURE__ */ jsx("div", { className: "flex-auto", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col", children: [
     /* @__PURE__ */ jsxs("div", { className: "pr-4 flex-1 flex-grow flex flex-row space-x-2", children: [
       /* @__PURE__ */ jsx("div", { className: "h-14 bg-gray-200 animate-pulse w-1/2" }),
       /* @__PURE__ */ jsx("div", { className: "h-14 bg-gray-200 animate-pulse w-1/2" })

@@ -16,7 +16,7 @@ const ReactToastify = "";
 const appName = {}.VITE_APP_NAME || "Laravel";
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
-  resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, /* @__PURE__ */ Object.assign({ "./Pages/Builder.tsx": () => import("./assets/Builder-aeb7dc1d.js"), "./Pages/Error.tsx": () => import("./assets/Error-5606f261.js"), "./Pages/Interaction.tsx": () => import("./assets/Interaction-519f1e5c.js") })),
+  resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, /* @__PURE__ */ Object.assign({ "./Pages/Builder.tsx": () => import("./assets/Builder-98d7fd71.js"), "./Pages/Error.tsx": () => import("./assets/Error-548b5252.js"), "./Pages/Interaction.tsx": () => import("./assets/Interaction-485feda2.js") })),
   setup({ el, App, props }) {
     const root = createRoot(el);
     root.render(
