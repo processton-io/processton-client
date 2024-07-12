@@ -16,7 +16,8 @@ class AppsController extends Controller
 
     protected $_layoutData;
 
-    function __construct(){
+    function __construct()
+    {
         $this->_layoutData = [
             'org' => [
                 'name' => 'Processton Client'
@@ -38,15 +39,15 @@ class AppsController extends Controller
      */
     public function index(Request $request): Response|RedirectResponse
     {
-        $applicationsByGroup =  collect(config('processton-client.apps', []))->groupBy('department');
-        
+        $applicationsByGroup = collect(config('processton-client.apps', []))->groupBy('department');
+
         // dd($applicationsByGroup);
         $grids = [];
 
-        foreach($applicationsByGroup as $department => $apps){
+        foreach ($applicationsByGroup as $department => $apps) {
             $grids[] = ProcesstonGridList::generateGrid(
                 $department,
-                $apps->map(function($app){
+                $apps->map(function ($app) {
                     return ProcesstonGridList::generateGridItem(
                         $app['name'],
                         $app['description'],
@@ -54,13 +55,19 @@ class AppsController extends Controller
                         $app['icon'],
                         '',
                         route('processton-client.app.index', ['app_slug' => $app['slug']]),
-                        6, 6, 3, 2, 1, 1, 1, 1, 1, 1
+                        [],
+                        ProcesstonInteraction::width(2, 1, 1,[
+                            'xxxs' => 4,
+                            'xxs' => 3,
+                            'xs' => 2,
+                        ])
                     );
                 })->toArray(),
                 '',
                 '',
                 [],
-                [], 12, 12, 12, 12, 12, 12, 12, 12, 12
+                [],
+                ProcesstonInteraction::width(12, 12, 12)
             );
         }
 
@@ -72,9 +79,9 @@ class AppsController extends Controller
             [],
             [],
             [
-                ProcesstonInteraction::generateRow([    
+                ProcesstonInteraction::generateRow([
                     ...$grids
-                ], 12, 12, 12, 12, 12, 12, 12, 12, 12),
+                ], ProcesstonInteraction::width(12, 12, 12)),
             ]
         );
 
@@ -84,5 +91,5 @@ class AppsController extends Controller
             'attachment_values' => $request->all(),
         ]);
     }
-    
+
 }
